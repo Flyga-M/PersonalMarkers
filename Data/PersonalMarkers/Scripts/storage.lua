@@ -74,8 +74,6 @@ local function deserializePosition(serializedPosition)
     if prefix ~= '[' or suffix ~= ']' then
         Debug:Warn("Unable to deserialize position, because prefix and suffix are unexpected. Given: "..prefix..""..suffix..". Expected: []")
         return fallbackVector
-    else
-        Debug:Print("Detected expected pre- and suffix: []")
     end
 
     local parts = split(content, " ")
@@ -83,8 +81,6 @@ local function deserializePosition(serializedPosition)
     if #parts ~= 3 then
         Debug:Warn("Unable to deserialize position, because amount of parts does not match expected value. Given: "..#parts..". Expected: 3")
         return fallbackVector
-    else
-        Debug:Print("Detected expected amount of parts: 3")
     end
 
     return I:Vector3(tonumber(parts[1], 10), tonumber(parts[2], 10), tonumber(parts[3], 10)) or fallbackVector
@@ -125,14 +121,10 @@ local function deserializeMarker(serializedMarker)
         if #pair == 2 then
             if pair[1] == "MapId" then
                 resultMarkerInfo.MapId = tonumber(pair[2], 10) or -1
-                Debug:Print("Set mapId: "..resultMarkerInfo.MapId)
             elseif pair[1] == "Position" then
                 resultMarkerInfo.Position = deserializePosition(pair[2])
-                Debug:Print("deserializing position: "..pair[2])
-                Debug:Print("Set position: "..resultMarkerInfo.Position.X.." "..resultMarkerInfo.Position.Y.." "..resultMarkerInfo.Position.Z)
             elseif pair[1] == "Tint" then
                 resultMarkerInfo.Tint = deserializeColor(pair[2])
-                Debug:Print("Set color: "..resultMarkerInfo.Tint)
             else
                 Debug:Warn("Unexpected key: "..pair[1])
             end
@@ -164,8 +156,6 @@ function PM_RetrieveMarkerStates()
         User:ShowInfo("Unable to retrieve stored marker states. Incompatible version ("..storageVersion.." != "..STORAGE_VERSION..").")
         Debug:Warn("Unable to retrieve previously stored marker states, because the stored version can't be handled by this version of the marker pack. Update your pack please.")
         return result
-    else
-        Debug:Print("Detected compatible storage version: "..storageVersion)
     end
 
     local amountString = Storage:ReadValue(NAMESPACE, KEY_AMOUNT)
@@ -173,8 +163,6 @@ function PM_RetrieveMarkerStates()
     if amountString == nil or amountString == "" then
         Debug:Warn("Unable to retrieve previously stored marker states, because no proper marker amount was stored.")
         return result
-    else
-        Debug:Print("Detected amount of markers: "..amountString)
     end
 
     local amount = tonumber(amountString, 10)
@@ -182,8 +170,6 @@ function PM_RetrieveMarkerStates()
     if amount == nil then
         Debug:Warn("Unable to retrieve previously stored marker states, because no proper marker amount was stored.")
         return result
-    else
-        Debug:Print("Successfully converted amount to number.")
     end
 
     if amount < 1 then
@@ -197,8 +183,6 @@ function PM_RetrieveMarkerStates()
             table.insert(result, deserializeMarker(serializedMarker))
         end
     end
-
-    Debug:Print("Retrieved all marker states.")
 
     return result
 end

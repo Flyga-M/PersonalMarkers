@@ -5,8 +5,13 @@
 ---@field Tint Color
 PM_MarkerInfo = {MapId = -1, Position = I:Vector3(0,0,0), Tint = I:Color(0,0,0,255)}
 
--- Derived class method new
-
+---Creates a new PM_MarkerInfo with the provided mapId, position and tint.
+---Will use default values if parameters are nil.
+---@param o any
+---@param mapId integer?
+---@param position Vector3?
+---@param tint Color?
+---@return PM_MarkerInfo
 function PM_MarkerInfo:new (o, mapId, position, tint)
    o = o or {}
    setmetatable(o, self)

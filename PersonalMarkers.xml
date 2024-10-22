@@ -4,7 +4,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="https://github.com/xrandox/Gw2_Marker_Pack_DTD_XSD https://raw.githubusercontent.com/xrandox/Gw2_Marker_Pack_DTD_XSD/main/GW2MarkerPack.xsd"
 xmlns="https://github.com/xrandox/Gw2_Marker_Pack_DTD_XSD">
     <MarkerCategory name="personalMarkers" DisplayName="Personal Markers">
-        <MarkerCategory name="separatormenu01" isseparator="1" displayname="[-PM-|-v0.1.0-|-20.10.2024-]" />
+        <MarkerCategory name="separatormenu01" isseparator="1" displayname="[-PM-|-v0.1.1-|-22.10.2024-]" />
         <MarkerCategory name="marker" DisplayName="Personal Marker" iconFile="Data/PersonalMarkers/Markers/1234928.png"/>
     </MarkerCategory>
     <POIs>
