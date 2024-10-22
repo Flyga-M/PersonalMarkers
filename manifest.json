@@ -1,8 +1,8 @@
 {
     "Name": "Personal Markers",
     "Description": "A pack to set personal markers on the map and in-game.",
-    "Download": "",
-    "Info": "",
+    "Download": "https://github.com/Flyga-M/PersonalMarkers/releases/download/v0.1.0/PersonalMarkers_0_1_0.zip",
+    "Info": "https://github.com/Flyga-M/PersonalMarkers",
     "Categories": "Miscellaneous",
     "AuthorName": "Flyga"
 }
